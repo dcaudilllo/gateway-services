@@ -1,7 +1,9 @@
-import { Controller, Get, Headers, Param } from '@nestjs/common';
+import { Controller, Get, Headers, Param, UseGuards } from '@nestjs/common';
 import axios from 'axios';
 import ADMIN_BASE_URL from '../../../utils/app.utils';
+import { AuthGuard } from '../../../auth/auth.guard';
 
+@UseGuards(new AuthGuard())
 @Controller('shop')
 export class ProductsController {
   private readonly baseUrl = `${ADMIN_BASE_URL}/products`;

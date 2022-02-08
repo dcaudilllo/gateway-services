@@ -1,8 +1,10 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
 import axios from 'axios';
 import ADMIN_BASE_URL from '../../utils/app.utils';
+import { AuthGuard } from '../../auth/auth.guard';
 
 @Controller('calculator')
+@UseGuards(new AuthGuard())
 export class CalculatorController {
   private readonly baseUrl = `${ADMIN_BASE_URL}/calculator`;
 
